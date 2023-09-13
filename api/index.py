@@ -1,9 +1,6 @@
 from flask import Flask
 from flask import request
-# from getFaces import *
-# import face_recognition
-# import sys
-# import json
+from .getFaces import getFaces
 
 app = Flask(__name__)
 
@@ -16,6 +13,6 @@ def index():
 @app.route('/api', methods=['POST'])
 def upload_file():
     f = request.files['image']
-    imgName = "/tmp/"+f.filename
-    f.save(imgName)
-    return "good"
+    f.save("/tmp/"+f.filename)
+    faces = getFaces(f.filename)
+    return faces
