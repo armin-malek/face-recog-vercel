@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-from .getFaces import getFaces
+from api.getFaces import getFaces
 
 app = Flask(__name__)
 
